@@ -1,0 +1,17 @@
+def is_balanced(expression):
+    stack = []
+    parentheses = {'(': ')', '{': '}', '[': ']'}
+
+    for char in expression:
+        if char in parentheses:
+            stack.append(char)
+        elif char in parentheses.values():
+            if not stack or parentheses[stack.pop()] != char:
+                return False
+
+    return len(stack) == 0
+user_input = input("Enter a string to check for balanced parentheses: ")
+if is_balanced(user_input):
+    print("The parentheses are balanced.")
+else:
+    print("The parentheses are not balanced.")
